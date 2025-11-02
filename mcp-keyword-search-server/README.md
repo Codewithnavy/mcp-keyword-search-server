@@ -1,7 +1,3 @@
-Perfect! **Screenshot dekh raha hoon - server successfully running!** Ab README update karna hai.
-
-**Create/Update: `README.md`**
-
 ```markdown
 # Keyword Search MCP Server
 
@@ -40,7 +36,7 @@ This MCP server provides Claude and other AI models with the ability to search f
 
 ```
 # Clone repository
-git clone https://github.com/navneetmishra/mcp-keyword-search-server.git
+git clone https://github.com/Codewithnavy/mcp-keyword-search-server.git
 cd mcp-keyword-search-server
 
 # Install dependencies
