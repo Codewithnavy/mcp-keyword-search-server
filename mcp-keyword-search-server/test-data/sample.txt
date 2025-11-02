@@ -1,0 +1,7 @@
+The quick brown fox jumps over the lazy dog.
+This is a sample file for testing the keyword search functionality.
+Keywords like "search", "keyword", and "test" appear multiple times.
+Search functionality should find all occurrences of search patterns.
+This file will be used to demonstrate the search tool in the MCP Inspector.
+Keyword matching can be case-sensitive or case-insensitive.
+The search results include line numbers and match positions.
