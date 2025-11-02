@@ -7,10 +7,20 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { SearchEngine } from "./searchEngine.js";
 
-const server = new Server({
-  name: "keyword-search-server",
-  version: "1.0.0",
-});
+const server = new Server(
+  {
+    name: "keyword-search-server",
+    version: "1.0.0",
+  },
+  {
+    capabilities: {
+      tools: {},
+    },
+  }
+);
+
+// Rest of code continues...
+
 
 // List available tools
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -72,14 +82,24 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 
 // Handle tool execution
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
-  const { name, arguments: args } = request.params;
+  const name = request.params?.name;
+  const args = request.params?.arguments;
 
   try {
+    if (!args) {
+      throw new Error("Missing request arguments");
+    }
+
     if (name === "search_keyword_in_file") {
+      if (typeof args.filePath !== "string" || typeof args.keyword !== "string") {
+        throw new Error(
+          "Invalid arguments for search_keyword_in_file: 'filePath' and 'keyword' are required strings"
+        );
+      }
       const result = SearchEngine.searchInFile(
         args.filePath as string,
         args.keyword as string,
-        args.caseSensitive as boolean
+        (args.caseSensitive ?? false) as boolean
       );
       return {
         content: [
@@ -90,10 +110,15 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         ],
       };
     } else if (name === "search_keyword_in_directory") {
+      if (typeof args.dirPath !== "string" || typeof args.keyword !== "string") {
+        throw new Error(
+          "Invalid arguments for search_keyword_in_directory: 'dirPath' and 'keyword' are required strings"
+        );
+      }
       const results = SearchEngine.searchInDirectory(
         args.dirPath as string,
         args.keyword as string,
-        args.fileExtension as string
+        (args.fileExtension ?? "") as string
       );
       return {
         content: [
