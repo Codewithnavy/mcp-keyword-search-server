@@ -17,13 +17,13 @@ This MCP server provides Claude and other AI models with the ability to search f
 
 ## Features
 
-- **Single File Search**: Search for keywords with line-level precision
-- **Directory Search**: Batch search across multiple files
-- **Match Metadata**: Get exact match positions, line numbers, and context
-- **Case Control**: Optional case-sensitive searching
-- **Error Handling**: Graceful error messages for missing files or invalid paths
-- **Security**: Path traversal attack prevention
-- **Performance**: Efficient file streaming and memory management
+- Single File Search: Search for keywords with line-level precision
+- Directory Search: Batch search across multiple files
+- Match Metadata: Get exact match positions, line numbers, and context
+- Case Control: Optional case-sensitive searching
+- Error Handling: Graceful error messages for missing files or invalid paths
+- Security: Path traversal attack prevention
+- Performance: Efficient file streaming and memory management
 
 ## Installation
 
